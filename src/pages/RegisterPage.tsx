@@ -3,20 +3,24 @@ import { TextField, Button, Typography, Box, Link } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import PageWrapper from "../components/PageWrapper";
 
-const LoginPage = () => {
+const RegisterPage = () => {
+  const [name, setName] = useState("");
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string>("");
+
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    if (username === "user" && password === "123456") {
-      setError("");
-      alert("Login bem-sucedido!");
-      navigate("/home");
-    } else {
-      setError("Credenciais incorretas.");
+  const handleRegister = () => {
+    if (!name || !username || !email || !password) {
+      setError("Todos os campos são obrigatórios.");
+      return;
     }
+
+    setError("");
+    alert("Cadastro realizado com sucesso!");
+    navigate("/home"); // Redireciona para a HomePage após o cadastro
   };
 
   return (
@@ -33,14 +37,45 @@ const LoginPage = () => {
         }}
       >
         <Typography variant="h5" sx={{ marginBottom: 3, fontWeight: "bold" }}>
-          Login
+          Cadastro
         </Typography>
+
+        <TextField
+          label="Nome"
+          variant="outlined"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          fullWidth
+          sx={{
+            marginBottom: 2,
+            backgroundColor: "#f9f9f9",
+            "& .MuiOutlinedInput-root fieldset": {
+              borderRadius: "10px",
+            },
+          }}
+        />
 
         <TextField
           label="Usuário"
           variant="outlined"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          fullWidth
+          sx={{
+            marginBottom: 2,
+            backgroundColor: "#f9f9f9",
+            "& .MuiOutlinedInput-root fieldset": {
+              borderRadius: "10px",
+            },
+          }}
+        />
+
+        <TextField
+          label="E-mail"
+          type="email"
+          variant="outlined"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           fullWidth
           sx={{
             marginBottom: 2,
@@ -76,7 +111,7 @@ const LoginPage = () => {
         <Button
           variant="contained"
           color="primary"
-          onClick={handleLogin}
+          onClick={handleRegister}
           fullWidth
           sx={{
             padding: "12px",
@@ -85,17 +120,16 @@ const LoginPage = () => {
             textTransform: "none",
           }}
         >
-          Entrar
+          Cadastrar
         </Button>
-        <Typography variant="body2" sx={{ marginTop: 2 }}>
-          Não tem uma conta?{" "}
+        <Typography sx={{ marginTop: 2 }}>
+          Já tem uma conta?{" "}
           <Link
             component="button"
-            variant="body2"
-            sx={{ fontWeight: "bold" }}
-            onClick={() => navigate("/register")}
+            onClick={() => navigate("/login")}
+            sx={{ fontWeight: "bold", cursor: "pointer" }}
           >
-            Registre-se aqui
+            Faça login aqui
           </Link>
         </Typography>
       </Box>
@@ -103,4 +137,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

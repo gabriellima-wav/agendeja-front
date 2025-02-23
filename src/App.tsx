@@ -2,6 +2,10 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
 import LoginPage from "./pages/LoginPage";
 import { CssBaseline, Box } from "@mui/material";
+import Header from "./components/Header";
+import { Route, Routes, Navigate } from "react-router-dom";
+import RegisterPage from "./pages/RegisterPage";
+import HomePage from "./pages/HomePage";
 
 const App = () => {
   return (
@@ -13,7 +17,13 @@ const App = () => {
           backgroundColor: theme.palette.background.default,
         }}
       >
-        <LoginPage />
+        <Header />
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/home" element={<HomePage />} />
+        </Routes>
       </Box>
     </ThemeProvider>
   );

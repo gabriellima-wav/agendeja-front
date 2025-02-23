@@ -1,50 +1,72 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# AgendeJa
 
-Currently, two official plugins are available:
+**AgendeJa** é uma plataforma moderna e intuitiva para marcar e gerenciar consultas. Desenvolvida para facilitar o agendamento de compromissos de forma simples e rápida, oferecendo uma experiência fluida e responsiva.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Tecnologias Usadas
 
-## Expanding the ESLint configuration
+- **React**: Biblioteca para construção de interfaces interativas
+- **TypeScript**: Tipagem estática para desenvolvimento seguro
+- **MUI Material**: Componentes UI modernos e acessíveis
+- **Firebase**: Backend como serviço para autenticação e banco de dados
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## ✨ Funcionalidades Principais
 
-- Configure the top-level `parserOptions` property like this:
+- 📝 Cadastro de usuários com perfil personalizado
+- 🕒 Seleção intuitiva de horários disponíveis
+- 📅 Visualização centralizada de consultas
+- 👨💻 Painel administrativo com relatórios
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🚀 Como Executar Localmente
+
+### Pré-requisitos
+
+- Node.js (v18+)
+- npm
+- Conta Firebase
+
+### Instalação
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+git clone https://github.com/seu-usuario/agendeja.git
+cd agendeja
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
+
+**Instalação de dependências:**
+```
+
+npm install
+
+```
+
+
+**Iniciar servidor:**
+```
+
+npm run dev
+
+```
+Acesse: http://localhost:3000
+
+## 📂 Estrutura do Projeto
+```
+
+/src
+├── components/ # Componentes reutilizáveis
+├── pages/ # Páginas principais
+├── firebase/ # Configurações Firebase
+├── styles/ # Estilos globais
+└── utils/ # Funções auxiliares
+
+```
+
+## 🤝 Contribuindo
+1. Faça um fork do projeto
+2. Crie sua branch: `git checkout -b feature/nova-funcionalidade`
+3. Commit suas mudanças: `git commit -m 'Adiciona nova funcionalidade'`
+4. Push para a branch: `git push origin feature/nova-funcionalidade`
+5. Abra um Pull Request
+
+## 📄 Licença
+Distribuído sob licença MIT. Veja [LICENSE](LICENSE) para mais detalhes.
