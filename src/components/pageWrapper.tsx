@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { ReactNode } from "react";
-
+import bgImage from "/bgImage.jpg";
 interface PageWrapperProps {
   children: ReactNode;
 }
@@ -10,6 +10,10 @@ const PageWrapper = ({ children }: PageWrapperProps) => {
     <Box
       sx={{
         backgroundColor: "#f8f8f8",
+        backgroundImage: `url(${bgImage })`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
         minHeight: "100vh",
         display: "flex",
         justifyContent: "center",

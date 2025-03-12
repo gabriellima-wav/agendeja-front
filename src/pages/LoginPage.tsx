@@ -23,13 +23,13 @@ const LoginPage = () => {
     <PageWrapper>
       <Box
         sx={{
-          backgroundColor: "#ffffff",
           padding: 3,
           borderRadius: 3,
           boxShadow: 5,
           width: "100%",
           maxWidth: "400px",
           textAlign: "center",
+          backgroundColor: "white",
         }}
       >
         <Typography variant="h5" sx={{ marginBottom: 3, fontWeight: "bold" }}>

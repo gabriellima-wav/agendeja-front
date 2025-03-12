@@ -20,7 +20,7 @@ const RegisterPage = () => {
 
     setError("");
     alert("Cadastro realizado com sucesso!");
-    navigate("/home"); // Redireciona para a HomePage após o cadastro
+    navigate("/home");
   };
 
   return (
