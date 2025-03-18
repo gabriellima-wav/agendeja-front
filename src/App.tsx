@@ -3,15 +3,24 @@ import theme from "./theme";
 import { CssBaseline } from "@mui/material";
 import UnauthenticatedApp from "./UnauthenticatedRoute";
 import AuthenticatedApp from "./AuthenticatedRoute";
+import { AuthProvider, useAuth } from "./AuthContext";
 
-const isAuthenticated = true;
+const AppContent = () => {
+  const { isAuthenticated } = useAuth();
 
-const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-            {isAuthenticated ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+      {isAuthenticated ? <AuthenticatedApp /> : <UnauthenticatedApp />}
     </ThemeProvider>
+  );
+};
+
+const App = () => {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 };
 
