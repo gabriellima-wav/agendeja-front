@@ -8,10 +8,10 @@ import {
   Divider,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import PageWrapper from "../components/PageWrapper";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebaseConfig";
 import { FirebaseError } from "firebase/app";
+import PageWrapper from "../components/PageWrapper";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");

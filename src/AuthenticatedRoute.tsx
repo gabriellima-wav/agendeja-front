@@ -1,9 +1,9 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SettingsPage from "./pages/SettingsPage";
-import Header from "./components/Header";
 import AppointmentsPage from "./pages/AppointmentsPage";
 import Navbar from "./components/navbar/Navbar";
+import Header from "./components/Header";
 
 const AuthenticatedApp = () => {
   return (

@@ -11,7 +11,6 @@ import {
   IconButton,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import PageWrapper from "../components/PageWrapper";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
@@ -20,6 +19,7 @@ import EmailOutlined from "@mui/icons-material/EmailOutlined";
 import { FirebaseError } from "firebase/app";
 import { auth } from "../config/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import PageWrapper from "../components/PageWrapper";
 
 
 const RegisterPage = () => {
