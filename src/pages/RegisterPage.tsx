@@ -20,7 +20,7 @@ import { FirebaseError } from "firebase/app";
 import { auth } from "../config/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import PageWrapper from "../components/PageWrapper";
-
+import { useFirestore } from "../hooks/useFirestore ";
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
@@ -30,21 +30,38 @@ const RegisterPage = () => {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const { addData, loading } = useFirestore("usuarios");
   const navigate = useNavigate();
+
   const handleRegister = async () => {
     if (!name || !username || !email || !password) {
       setError("Todos os campos são obrigatórios.");
       return;
     }
-  
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      // 1. Criar o usuário na autenticação do Firebase
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+
+      // 2. Salvar os dados adicionais no Firestore
+      await addData({
+        uid: user.uid,
+        name: name,
+        username: username,
+        email: email,
+        createdAt: new Date(),
+      });
+
       setError("");
       navigate("/home");
     } catch (error) {
       if (error instanceof Error) {
         const firebaseError = error as FirebaseError;
-        switch(firebaseError.code) {
+        switch (firebaseError.code) {
           case "auth/email-already-in-use":
             setError("Este email já está em uso.");
             break;
@@ -221,6 +238,7 @@ const RegisterPage = () => {
           variant="contained"
           color="primary"
           onClick={handleRegister}
+          disabled={loading}
           fullWidth
           sx={{
             padding: "12px",
@@ -230,7 +248,7 @@ const RegisterPage = () => {
             marginBottom: 3,
           }}
         >
-          Criar conta
+          {loading ? "Criando conta..." : "Criar conta"}
         </Button>
 
         <Divider sx={{ marginBottom: 3 }}>

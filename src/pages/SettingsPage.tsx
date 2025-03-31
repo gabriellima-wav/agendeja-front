@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import {
-  Box,
-  Typography,
   Paper,
   Snackbar,
   Alert,
@@ -14,6 +12,7 @@ import ProfileTab from "../components/settingsTabs/ProfileTab";
 import PasswordTab from "../components/settingsTabs/PasswordTab";
 import NotificationsTab from "../components/settingsTabs/NotificationsTab";
 import { SettingTab } from "../components/settingsTabs/SettingTab";
+import FormatPageWrapper from "../components/FormatPageWrapper";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -31,7 +30,7 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`settings-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && children}
     </div>
   );
 }
@@ -136,20 +135,8 @@ const SettingsPage: React.FC = () => {
   };
 
   return (
-    <Box sx={{ mx: "auto" }}>
-      <Typography
-        variant="h4"
-        component="h1"
-        gutterBottom
-        sx={{ mb: 3, fontWeight: 500 }}
-      >
-        Configurações
-      </Typography>
-
-      <Divider sx={{ mb: 4 }} />
-
+    <FormatPageWrapper title="Configurações">
       <Paper
-        elevation={0}
         sx={{
           borderRadius: 2,
           overflow: "hidden",
@@ -208,7 +195,7 @@ const SettingsPage: React.FC = () => {
           {snackbar.message}
         </Alert>
       </Snackbar>
-    </Box>
+    </FormatPageWrapper>
   );
 };
 
